@@ -1,13 +1,25 @@
+from typing import List
+
 class Solution:
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        pair = [[p,s] for p,s  in zip(position, speed)]
-        stack = []
-
-        for p, s in sorted(pair)[::-1]:
-            stack.append((target - p) / s)
-            if len(stack) >= 2 and stack[-1] <= stack [-2]:
-                stack.pop()
-        return len(stack) 
-
-
+        n = len(position)
+        pair = []
         
+        # Create pairs of (position, speed)
+        for i in range(n):
+            pair.append((position[i], speed[i]))
+        
+        # Sort the pairs by position in descending order
+        pair.sort(reverse=True)
+        
+        fleets = 0
+        last_time = 0
+        
+        # Calculate time to reach the target and manage fleets
+        for p, s in pair:
+            time = (target - p) / s
+            if time > last_time:
+                fleets += 1
+                last_time = time
+        
+        return fleets
