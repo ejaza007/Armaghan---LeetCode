@@ -2,9 +2,7 @@ from typing import List
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
-
+       
         l = 1  # Pointer to place the next unique element
 
         for r in range(1, len(nums)):
