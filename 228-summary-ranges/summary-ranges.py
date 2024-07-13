@@ -12,7 +12,7 @@ class Solution:
                 i += 1
 
             if start != nums[i]:
-                res.append(f"{start}->{nums[i]}")
+                res.append(str(start) + "->" + str(nums[i]))
             else:
                 res.append(str(nums[i]))
 
