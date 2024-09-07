@@ -5,7 +5,7 @@ class Solution:
         
         l, r = 0, len(filtered_s) - 1
         
-        while l <r:
+        while l <= r:
             if filtered_s[l] == filtered_s[r]:
                 l += 1
                 r -= 1
