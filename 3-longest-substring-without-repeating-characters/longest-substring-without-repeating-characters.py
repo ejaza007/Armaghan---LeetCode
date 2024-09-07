@@ -7,8 +7,8 @@ class Solution:
         while r < len(s):
             if s[r] not in charSet:
                 charSet.add(s[r])
+                res = max(res, r - l + 1)
                 r += 1
-                res = max(res, r - l)
             else:
                 while s[r] in charSet and l < r:
                     charSet.remove(s[l])
