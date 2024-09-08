@@ -3,14 +3,14 @@ class Solution:
         res = defaultdict(list)
 
         for s in strs:
-            newArr = [0] * 26
-
+            arr = [0] * 26
 
             for c in s:
-                newArr[ord(c) - ord('a')]+=1
-            res[tuple(newArr)].append(s)
+                arr[ord(c) - ord('a')] +=1
+            
+            res[tuple(arr)].append(s)
+        
         return list(res.values())
-
 
             
             
