@@ -3,24 +3,22 @@ from typing import List
 class Solution:
     def findMin(self, nums: List[int]) -> int:
         l, r = 0, len(nums) - 1
-        res = nums[0]
 
-        while l <= r:
-            # If the subarray is sorted, the smallest element is nums[l]
-            if nums[l] < nums[r]:
-                res = min(res, nums[l])
-                break
+        # If the array is not rotated (already sorted), return the first element
+        if nums[l] < nums[r]:
+            return nums[l]
 
+        while l < r:
             mid = (l + r) // 2
-            res = min(res, nums[mid])
 
-            # Determine which side is unsorted and search there
-            if nums[mid] >= nums[l]:
+            # If mid element is greater than the rightmost element, the pivot is in the right half
+            if nums[mid] > nums[r]:
                 l = mid + 1
             else:
-                r = mid - 1
+                # If the mid element is less than or equal to the rightmost element, the pivot is in the left half
+                r = mid
 
-        return res
-
+        # When l == r, we found the pivot point, which is the smallest element
+        return nums[l]
 
         
