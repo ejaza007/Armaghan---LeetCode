@@ -1,31 +1,13 @@
-from typing import List
-
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) <= 2:
-            return len(nums)
+            return len(nums)  # If the list has 2 or fewer elements, no need to modify
         
-        slow = 2  # Start from the third element since the first two can be duplicates
-        for fast in range(2, len(nums)):
-            if nums[fast] != nums[slow - 2]:  # Compare with the element two positions back
-                nums[slow] = nums[fast]
-                slow += 1
+        # Start the pointer at index 2
+        k = 2
+        for i in range(2, len(nums)):
+            if nums[i] != nums[k - 2]:
+                nums[k] = nums[i]
+                k += 1
         
-        return slow
-
-    
-
-
-
-
-
-
-     #  l = 1  # Pointer to place the next unique element
-
-        #for r in range(1, len(nums)):
-            #if nums[r] != nums[r - 1]:
-             #   nums[l] = nums[r]
-              #  l += 1
-
-        #return l
-        
+        return k  # Return the length of the modified array
