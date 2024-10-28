@@ -4,7 +4,7 @@ class Solution:
         currentEnd = 0
         farthest = 0
 
-        for i in range(len(nums) - 1):
+        for i in range(len(nums)-1):
             farthest = max(farthest, i + nums[i])
 
             if i == currentEnd:
