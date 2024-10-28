@@ -1,21 +1,13 @@
+from typing import List
+
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
-
-        
         citations.sort()
         res = 0
 
-        for i in range(len(citations)):   
-            if len(citations) - i <= citations[i]:
+        for i, h in enumerate(citations):
+            if h >= len(citations) - i:
                 res = len(citations) - i
-                break
-                
+                break  # We found the h-index, so we can exit the loop
+
         return res
-
-        
-            
-
-
-
-
-        
